@@ -1,0 +1,204 @@
+//        // iterate over list, find first occurence, remove and return true, else false
+//    	if ((size() == 0) || (o == null)) {
+//    		// nothing to remove if size is 0
+//    		return false;
+//    	}
+//    	
+//    	Node current = head;
+//    	
+//    	if (size() == 1) {
+//    		if (current.equals(o)) {
+//    			head = null;
+//    			tail = null;
+//    			size--;
+//    			return true;
+//    		}
+//    		
+//    	}
+//    	
+////    	if (size() == 2) {
+////    		if (current.data.equals(o)) {
+////    			head = head.next;
+////    			tail.prev = null;
+////    		} else if (current.next.data.equals(o)) {
+////    			
+////    		}
+////    	}
+//    	
+//    	// if last element is o then remove it
+//    	if (tail.data.equals(o)) {
+//    		tail = tail.prev;
+//    		tail.next = null;
+//    		size--;
+//    		return true;
+//    	}
+//    	
+//    	Node beforeCurrent = null;
+//    	Node afterCurrent = null;
+//    	
+//    	while (current.next != null) {
+//    		if (current.data.equals(o)) {
+//    			beforeCurrent = current.prev;
+//    			afterCurrent = current.next;
+//    			
+//    			beforeCurrent.next = afterCurrent;
+//    			afterCurrent.prev = beforeCurrent;
+//    			
+//    			size--;
+//    			return true;
+//    		}
+//    		if (current != tail) {
+//    			current = current.next;
+//    		}
+//    	}
+//    		
+//        return false;
+
+
+
+For the remove method
+
+// if (size() == 1) {
+//	  		if (current.data.equals(o)) {
+//	  			head = null;
+//	  			tail = null;
+//	  			size--;
+//	  			return true;
+//	  		}
+//	  		
+//	  	}
+//	  	
+//	  	if (size() == 2) {
+//    		if (current.data.equals(o)) {
+//    			head = head.next;
+//    			tail.prev = null;
+//    		} else if (current.next.data.equals(o)) {
+//    			tail = tail.prev;
+//    			head.next = null;
+//    		}
+//    	}
+//	  	
+//	  	// if last element is o then remove it
+//	  	if (tail.data.equals(o)) {
+//	  		tail = tail.prev;
+//	  		tail.next = null;
+//	  		size--;
+//	  		return true;
+//	  	}
+//	  	
+//	  	Node beforeCurrent = null;
+//	  	Node afterCurrent = null;
+//	  	
+//	  	while (current.next != null) {
+//	  		if (current.data.equals(o)) {
+//	  			beforeCurrent = current.prev;
+//	  			afterCurrent = current.next;
+//	  			
+//	  			beforeCurrent.next = afterCurrent;
+//	  			afterCurrent.prev = beforeCurrent;
+//	  			
+//	  			size--;
+//	  			return true;
+//	  		}
+//	  		if (current != tail) {
+//	  			current = current.next;
+//	  		}
+//	  	}
+
+
+
+
+// For add:
+Node newElement = new Node(element);
+    	
+    	if ((size() == 0) || (newElement.data.compareTo(head.data) <= 0)) {
+    		// adding element if list empty or element is smaller than head
+    		newElement.next = head;
+    		if (head != null) { head.prev = newElement; }
+    		head = newElement;
+    		size++; 
+    		return true;
+    	} else if ((newElement.data.compareTo(tail.data) >= 0)) {
+    		// adding element to end if element is greater than tail
+    		tail.next = newElement;
+    		newElement.prev = tail;
+    		tail = newElement;
+    		size++; 
+    		return true;
+    	} else {
+    		
+    		Node current = head;
+    		
+    		// iterate until current is greater than element
+    		while ((current.next.next != null) && (current.data.compareTo(element) <= 0)) {
+    			current = current.next;
+    		}
+    		
+    		// add the node in front of current (which is greater than newElement)
+    		current.prev.next = newElement;
+    		newElement.next = current;
+    		newElement.prev = current.prev;
+    		current.prev = newElement;
+    	}
+    	
+    	size++;
+        return true;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+TEST CODE IN LOGIN STATS
+//		Record test1 = new Record(7, false, "hdbasjkfdsf", time);
+//		
+//		if (test1.equals(newRecord)) {
+//			System.out.println("true");
+//		} else {
+//			System.out.println("false");
+//		}
+//		
+		
+//		
+//		SortedLinkedList<Integer> testList = new SortedLinkedList<Integer>();
+//		SortedLinkedList<Integer> testList2 = new SortedLinkedList<Integer>();
+//		SortedLinkedList<String> testList3 = new SortedLinkedList<String>();
+//		testList2.add(3);
+//		testList2.add(5);
+//		testList2.add(8);
+//		
+//		System.out.println(testList);
+//		testList.add(2);
+//		System.out.println(testList);
+//		testList.add(5);
+//		System.out.println(testList);
+//		testList.add(3);
+//		System.out.println(testList);
+//		testList.add(22);
+//		System.out.println(testList);
+//		testList.add(5);
+//		System.out.println(testList);
+//		testList.add(8);
+//		System.out.println(testList);
+//		testList.add(0);
+//		System.out.println(testList);
+//		testList.remove(2);
+//		System.out.println(testList);
+//		testList.remove(22);
+//		System.out.println(testList);
+//		testList.remove(0);
+//		System.out.println(testList);
+//		testList.remove(5);
+//		System.out.println(testList);
+//		System.out.println(testList.get(1));
+//		System.out.println(testList.get(0));
+//		System.out.println(testList.get(2));
+//		if (testList.equals(testList3)) {
+//			System.out.println("true");
+//		} else {
+//			System.out.println("false");
+//		}
+//	

@@ -1,0 +1,14 @@
+You can download the code and work with it on your own computer, Co
+you can work with it in an Ed worksapce. To do the latter, fork the 
+workspace first, so that you can edit the files and have full ownership
+of the files. 
+
+To work with the code, open the terminal sub-window.
+To compile the program, execute 
+  javac project1/ColorConverter.java 
+To run the program, execute 
+  java project1.ColorConverter INPUT_FILE 
+(in which the INPUT_FILE is replaced by a name of the input file). 
+To run the program with the input file provided in this workspace, execute
+  java project1.ColorConverter color_list.txt 
+You can (and should) also create your own input files to experiment with.  
